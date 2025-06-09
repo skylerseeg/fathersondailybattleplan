@@ -1,18 +1,21 @@
+// --- CORRECT IMPORTS ---
+// ONLY ONE of these lines should exist for React hooks
 import React, { useState, useEffect, useRef } from 'react';
+
+// ONLY ONE of these lines should exist for lucide-react icons
 import { BookOpen, Scale, ShieldCheck, Zap, TrendingUp, Users, FileText, X, Sun, Moon, Briefcase, Sparkles, Utensils, Heart, Dribbble, Gamepad2, Brain, Send, Hourglass, Coffee, CheckCircle, XCircle } from 'lucide-react';
 
-// Import Firebase modules
+// Import Firebase modules - these are fine
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc, collection, query, where, onSnapshot } from 'firebase/firestore';
+import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, doc, setDoc, getDoc, collection, query, onSnapshot } from 'firebase/firestore';
 
-// --- Firebase Initialization (YOUR CUSTOM CONFIGURATION HERE) ---
-// IMPORTANT: Replace the placeholder values below with YOUR actual Firebase project details
-// from your Firebase Console -> Project settings -> Your apps -> Web app setup
+
+// Your web app's Firebase configuration - PASTE YOUR COPIED CONFIG HERE
 const firebaseConfig = {
   apiKey: "AIzaSyC-eBwi6nOezBzsjxV3pNbI6Yb8CG-ZVOs",
   authDomain: "fathersonbattleplan.firebaseapp.com",
-  databaseURL: "https://fathersonbattleplan-default-rtdb.firebaseio.com",
+  databaseURL: "https://fathersonbattleplan-default-rtdb.firebaseio.com", // This URL is for Realtime DB, app uses Firestore
   projectId: "fathersonbattleplan",
   storageBucket: "fathersonbattleplan.firebasestorage.app",
   messagingSenderId: "1007439241526",
@@ -20,10 +23,12 @@ const firebaseConfig = {
   measurementId: "G-K2EPGGMN3Z"
 };
 
-// Initialize Firebase app and services
+// Initialize Firebase App
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
+
+// Initialize Firebase services used by the app
+const db = getFirestore(app); // Get the Firestore instance
+const auth = getAuth(app);   // Get the Auth instance
 
 // --- Helper Components ---
 
